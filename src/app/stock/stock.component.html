@@ -1,0 +1,23 @@
+<table class="table" cdkDropList  *ngIf="stockReports$ | async as stockReports" cdkDropList (cdkDropListDropped)="onDrop($event, stockReports)">
+  <thead>
+  <tr>
+    <th>Accession Number</th>
+    <th>Assets</th>
+    <th>Cik</th>
+    <th>EntityName</th>
+    <th>Document Type</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let stock of stockReports" cdkDrag>
+    <td>{{ stock.accessionNumber ?  stock.accessionNumber : '-'}}</td>
+    <td>{{ stock.Assets ? stock.Assets : '-'}}</td>
+    <td>{{ stock.cik ? stock.cik : '-'}}</td>
+    <td>{{ stock.entityName ?  stock.entityName : '-'}}</td>
+    <td>{{ stock.documentType ? stock.documentType : '-' }}</td>
+  </tr>
+</table>
+
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="offset === 0">Prev</button>
+  <button (click)="nextPage()">Next</button>
+</div>
