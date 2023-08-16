@@ -1,6 +1,7 @@
 <table class="table" cdkDropList  *ngIf="stockReports$ | async as stockReports" cdkDropList (cdkDropListDropped)="onDrop($event, stockReports)">
   <thead>
   <tr>
+    <th>#</th>
     <th>Accession Number</th>
     <th>Assets</th>
     <th>Cik</th>
@@ -8,7 +9,8 @@
     <th>Document Type</th>
   </tr>
   </thead>
-  <tr *ngFor="let stock of stockReports" cdkDrag>
+  <tr *ngFor="let stock of stockReports, let i = index" cdkDrag>
+    <td>{{ i + 1 }}</td>
     <td>{{ stock.accessionNumber ?  stock.accessionNumber : '-'}}</td>
     <td>{{ stock.Assets ? stock.Assets : '-'}}</td>
     <td>{{ stock.cik ? stock.cik : '-'}}</td>
