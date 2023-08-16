@@ -18,6 +18,10 @@ export class StockComponent implements OnInit {
   ngOnInit(): void {
     this._loadStockReports();
   }
+
+  getDynamicIndex(index: number): number {
+    return index + this.offset * this.last;
+  }
   onDrop(event: CdkDragDrop<any[]>, stockReports: Stock[]): void {
     moveItemInArray(stockReports, event.previousIndex, event.currentIndex);
   }
